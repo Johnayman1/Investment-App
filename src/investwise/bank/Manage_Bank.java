@@ -1,10 +1,11 @@
 package investwise.bank;
 import java.util.Scanner;
 import investwise.user.Investor;
-
+import investwise.controller.ValidationService;
 public class Manage_Bank {
     public void Bank(Investor investor){
 
+        ValidationService vs = new ValidationService();
         Scanner sc = new Scanner(System.in);
         String choice = "";
 
@@ -22,8 +23,15 @@ public class Manage_Bank {
 
             if (choice.equals("1")) {
 
-                System.out.print("Please, enter account number: ");
-                int accountNumber = Integer.parseInt(sc.nextLine());
+                int accountNumber; String inputAccountNumber;
+                while (true){
+                    System.out.print("Please, enter account number: ");
+                    inputAccountNumber = sc.nextLine();
+                    if(vs.isNumber(inputAccountNumber)) {
+                        accountNumber = Integer.parseInt(inputAccountNumber);
+                        break;
+                    }
+                }
 
                 System.out.print("Please, enter bank name: ");
                 String bankName = sc.nextLine();
@@ -31,30 +39,54 @@ public class Manage_Bank {
                 System.out.print("Please, enter userId: ");
                 String userId = sc.nextLine();
 
-                System.out.print("Please, enter card number: ");
-                String cardNumber = sc.nextLine();
+                String cardNumber , cardNumberInput;
+                while (true){
+                    System.out.print("Please, enter card number: ");
+                    cardNumberInput = sc.nextLine();
+                    if(vs.validCardNumber(cardNumberInput)) {
+                        cardNumber = cardNumberInput;
+                        break;
+                    }
+                }
 
-                System.out.print("Please, enter CVV: ");
-                String cvv = sc.nextLine();
-                System.out.print("Please, enter expiry date: ");
-                String expiryDate = sc.nextLine();
+                String cvv , inputCvv;
+                while (true){
+                    System.out.print("Please, enter CVV: ");
+                    inputCvv = sc.nextLine();
+                    if(vs.validCardCvv(inputCvv)) {
+                        cvv = inputCvv;
+                        break;
+                    }
+                }
 
-                investor.validationService.validCardNumber(cardNumber);
-                investor.validationService.validCardCvv(cvv);
-                investor.validationService.validDate(expiryDate);
+                String expiryDate , inputExpiryDate;
+                while (true){
+                    System.out.print("Please, enter expiry date: ");
+                     inputExpiryDate = sc.nextLine();
+                    if(vs.validDate(inputExpiryDate)) {
+                        expiryDate = inputExpiryDate;
+                        break;
+                    }
+                }
 
                 BankAccount bankAccount = new BankAccount(accountNumber, bankName, userId, cardNumber, cvv, expiryDate);
                 investor.addBankAccount(bankAccount);
 
             } else if (choice.equals("2")) {
-                System.out.print("Please, enter account number to remove: ");
-                int accountNumber = Integer.parseInt(sc.nextLine());
 
-                investor.removeBankAccount(accountNumber);
+                int accNumber; String inputAccNumber;
+                while (true){
+                    System.out.print("Please, enter account number: ");
+                    inputAccNumber = sc.nextLine();
+                    if(vs.isNumber(inputAccNumber)) {
+                        accNumber = Integer.parseInt(inputAccNumber);
+                        break;
+                    }
+                }
+                investor.removeBankAccount(accNumber);
 
             } else if (choice.equals("3")){
                 System.out.println("\n***************************************************************\n\n");
-                sc.close();
                 break ;
             }
         }
