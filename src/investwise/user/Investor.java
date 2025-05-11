@@ -28,7 +28,7 @@ public class Investor extends User {
 
     @Override
     public void signup(String name, String email, String username, String password) {
-        Path filePath = Paths.get("C:\\Users\\DELL\\OneDrive\\Documents\\College\\Software Engineering\\Assignment 2\\investwise\\src\\investwise\\users.txt");
+        Path filePath = Paths.get("C:\\Users\\COMPUMARTS\\Projects\\investwise\\Investment-App\\src\\investwise\\users.txt");
 
         if (Files.exists(filePath)) {
             try (Stream<String> lines = Files.lines(filePath)) {
@@ -70,7 +70,7 @@ public class Investor extends User {
     public boolean login(String inputEmail, String inputPassword) {
         boolean loginSuccess = false;
 
-        try (Scanner scanner = new Scanner(new File("C:\\Users\\DELL\\OneDrive\\Documents\\College\\Software Engineering\\Assignment 2\\investwise\\src\\investwise\\users.txt"))) {
+        try (Scanner scanner = new Scanner(new File("C:\\Users\\COMPUMARTS\\Projects\\investwise\\Investment-App\\src\\investwise\\users.txt"))) {
             while (scanner.hasNextLine()) {
                 String[] parts = scanner.nextLine().split(",");
                 if (parts.length >= 4 &&
@@ -173,8 +173,14 @@ public class Investor extends User {
     }
 
     public void removeBankAccount(int accountNumber) {
-        bankAccounts.removeIf(account -> account.getAccountNumber() == accountNumber);
-        System.out.println("\nBank account removed if it existed.\n");
+        for (BankAccount account : bankAccounts) {
+            if (account.getAccountNumber() == accountNumber) {
+                bankAccounts.remove(account);
+                System.out.println("\nBank account deleted Successfully.\n");
+                return;
+            }
+        }
+        System.out.println("\nBank account not found.\n");
     }
 
     // --------------------- Financial Goal Methods ---------------------
