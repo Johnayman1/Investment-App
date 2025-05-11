@@ -82,13 +82,21 @@ public class ValidationService {
 // ----------------------------------------------- Valid Card Number
     
     public boolean validCardNumber(String account) {
-        return account != null && account.matches("\\d{16}");
+        if(account != null && account.matches("\\d{16}")) return true;
+        else{
+            System.out.println("Invalid card number!! Please enter a valid card number.");
+            return false;
+        }
     }
 
 // ----------------------------------------------- Valid Card Cvv
  
     public boolean validCardCvv(String cvv) {
-        return cvv != null && cvv.matches("\\d{3}");
+        if(cvv != null && cvv.matches("\\d{3}")) return true ;
+        else{
+            System.out.println("Invalid card cvv!! Please enter a valid card cvv.");
+            return false;
+        }
     }
 
 // ----------------------------------------------- Valid Date
