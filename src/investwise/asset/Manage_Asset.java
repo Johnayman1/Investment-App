@@ -7,22 +7,25 @@ import investwise.controller.ValidationService;
 public class Manage_Asset {
 
 // ----------------------------------------------- Management
+    private static int nextAssetId = 1;
 
-    public void asset(Investor investor) {
+    public void assetMenu(Investor investor) {
         ValidationService vs = new ValidationService();
         Scanner sc = new Scanner(System.in);
         String choice;
+
 
         System.out.println("\n\n-------------------------- Assets Management --------------------------");
         
         while(true) {
             System.out.println("\n1) Add Regular Assets");
             System.out.println("2) Add Risk Assets");
-            System.out.println("3) Edit Assets");
-            System.out.println("4) Remove Assets");
-            System.out.println("5) Calculate Total Assets");
-            System.out.println("6) View Risk Assets");
-            System.out.println("7) Exit");
+            System.out.println("3) View Regular Assets");
+            System.out.println("4) View Risk Assets");
+            System.out.println("5) Edit Assets");
+            System.out.println("6) Remove Assets");
+            System.out.println("7) Calculate Total Assets");
+            System.out.println("8) Exit");
 
             System.out.print("\nPlease, Please, enter your choice: ");
             choice = sc.nextLine();
@@ -35,24 +38,27 @@ public class Manage_Asset {
                 case "2": // Add Risk Assets
                     addRiskAssets(investor, vs, sc);
                     break;
-                    
-                case "3": // Edit Assets
+
+                case "3": // View Regular Assets
+                    investor.printAllRegularAssets();
+                    break;
+
+                case "4": // View Risk Assets
+                    investor.printAllRiskAssets();
+                    break;
+                case "5": // Edit Assets
                     editAssets(investor, vs, sc);
                     break;
                     
-                case "4": // Remove Assets
+                case "6": // Remove Assets
                     removeAssets(investor, sc);
                     break;
                     
-                case "5": // Calculate Total Assets
+                case "7": // Calculate Total Assets
                     calculateTotalAssets(investor);
                     break;
-                    
-                case "6": // View Risk Assets
-                    investor.printAllRiskAssets();
-                    break;
-                    
-                case "7": // Exit
+
+                case "8": // Exit
                     System.out.println("***************************************************************\n\n");
                     return;
                     
@@ -77,8 +83,7 @@ public class Manage_Asset {
                 break;
             }
         }
-        
-        System.out.println("\nAssets will take ids from 1 to " + num + "!");
+
         for (int i = 0; i < num; i++) {
             String price, date, quant;
             
@@ -117,7 +122,7 @@ public class Manage_Asset {
                 }
             }
             
-            Asset asset = new Asset(i + 1, name, type, quantity, purchasePrice, purchaseDate);
+            Asset asset = new Asset(nextAssetId++, name, type, quantity, purchasePrice, purchaseDate);
             investor.addAsset(asset);
         }
     }
@@ -139,7 +144,7 @@ public class Manage_Asset {
             }
         }
         
-        System.out.println("\nRisk assets will take ids from 1 to " + num + "!");
+
         for (int i = 0; i < num; i++) {
             String price, date, quant, risk;
             
@@ -192,7 +197,7 @@ public class Manage_Asset {
                 System.out.println("Risk score must be between 0 and 10.");
             }
             
-            investor.addRiskAsset(i + 1, strategy, riskScore, name, type, quantity, purchasePrice, purchaseDate);
+            investor.addRiskAsset(nextAssetId++, strategy, riskScore, name, type, quantity, purchasePrice, purchaseDate);
         }
     }
 
