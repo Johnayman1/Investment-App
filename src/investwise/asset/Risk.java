@@ -55,3 +55,4 @@ public class Risk extends Asset {
         this.riskScore = riskScore;
     }
 }
+
