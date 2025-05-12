@@ -14,6 +14,7 @@ public class FinancialGoal {
         this.currentProgress = 0;
     }
 
+    
     // Setters
     public void setGoalID(int goalID) {
         this.goalID = goalID;
