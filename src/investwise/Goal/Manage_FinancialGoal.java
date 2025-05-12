@@ -21,6 +21,7 @@ public class Manage_FinancialGoal {
             System.out.println("3) Delete Financial Goals");
             System.out.println("4) Exit");
 
+            
             System.out.print("\nPlease, enter your choice: ");
             choice = sc.nextLine();
 
