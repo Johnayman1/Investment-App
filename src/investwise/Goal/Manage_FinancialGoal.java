@@ -6,6 +6,7 @@ import investwise.controller.ValidationService;
 
 public class Manage_FinancialGoal {
 
+    private static int goalID = 1;
     public void financialGoal(Investor investor) {
 
         ValidationService vs = new ValidationService();
@@ -19,9 +20,9 @@ public class Manage_FinancialGoal {
             System.out.println("\n1) Add Financial Goals");
             System.out.println("2) Update Financial Goals");
             System.out.println("3) Delete Financial Goals");
-            System.out.println("4) Exit");
+            System.out.println("4) Display Financial Goals");
+            System.out.println("5) Exit");
 
-            
             System.out.print("\nPlease, enter your choice: ");
             choice = sc.nextLine();
 
@@ -36,16 +37,16 @@ public class Manage_FinancialGoal {
                         break;
                     }
                 }
-                System.out.println("Goals will take IDs from 1 to " + num + " .");
 
                 for (int i = 0; i < num; i++) {
-                    System.out.print("Please enter description of goal number " + (i + 1) + ": ");
+
+                    System.out.print("\nEnter the description of Goal ID " + goalID + " : ");
                     String desc = sc.nextLine();
 
                     String amount;
                     double targetAmount;
                     while (true) {
-                        System.out.print("Please enter target amount: ");
+                        System.out.print("Please enter target amount of Goal ID " + goalID + ": " );
                         amount = sc.nextLine();
                         if (vs.isDouble(amount)) {
                             targetAmount = Double.parseDouble(amount);
@@ -53,7 +54,7 @@ public class Manage_FinancialGoal {
                         }
                     }
 
-                    FinancialGoal goal = new FinancialGoal(i + 1, desc, targetAmount);
+                    FinancialGoal goal = new FinancialGoal(goalID++, desc, targetAmount);
                     investor.addGoal(goal);
                 }
                 break;
@@ -88,10 +89,15 @@ public class Manage_FinancialGoal {
                 investor.deleteGoal(goalID);
                 break;
 
-            } else if (choice.equals("4")) {
+            }else if (choice.equals("4")) {
+                investor.displayGoals();
+                break;
+            }
+            else if (choice.equals("5")) {
                 System.out.println("***************************************************************\n\n");
                 break;
             }
+            System.out.println("Invalid choice. Try again.");
         }
     }
 }
