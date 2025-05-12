@@ -30,7 +30,7 @@ public class Dashboard {
             if (choice.equals("1")) {
 
                 Manage_Asset asset = new Manage_Asset();
-                asset.asset(investor);
+                asset.assetMenu(investor);
 
             } else if (choice.equals("2")) {
 
