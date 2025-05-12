@@ -17,6 +17,13 @@ public class BankAccount {
         this.cvv = cvv;
         this.expiryDate = expiryDate;
     };
+    public void printAccountDetails() {
+        System.out.println("Account Number: " + getAccountNumber());
+        System.out.println("Bank Name: " + getBankName());
+        System.out.println("User ID: " + getUserId());
+        System.out.println("Card Number: " + getCardNumber());
+        System.out.println("Expiry Date: " + getExpiryDate());
+    }
 
     public int getAccountNumber() {
         return accountNumber;
