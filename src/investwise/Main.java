@@ -17,5 +17,5 @@ public class Main {
         Dashboard dashboard = new Dashboard();
         dashboard.dashboard();
 
-    }
+    } 
 }
