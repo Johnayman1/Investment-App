@@ -27,9 +27,10 @@ public class Investor extends User {
     // --------------------- Sign Up Method ---------------------
 
     @Override
-    public void signup(String name, String email, String username, String password) {
+    public boolean signup(String name, String email, String username, String password) {
         Path filePath = Paths.get("C:\\Users\\COMPUMARTS\\Projects\\investwise\\Investment-App\\src\\investwise\\users.txt");
 
+        // Check if file exists and validate email or username
         if (Files.exists(filePath)) {
             try (Stream<String> lines = Files.lines(filePath)) {
                 boolean userExists = lines.anyMatch(line -> {
@@ -39,30 +40,36 @@ public class Investor extends User {
 
                 if (userExists) {
                     System.out.println("\n\nError: Email or username already registered.");
-                    return;
+                    return false;
                 }
             } catch (IOException e) {
                 System.out.println("\n\nError checking existing users: " + e.getMessage());
-                return;
+                return false;
             }
         }
 
+        // Try to register the new user
         try (FileWriter writer = new FileWriter(filePath.toFile(), true)) {
             String userData = String.join(",", name, email, username, password) + "\n";
             writer.write(userData);
             writer.flush();
 
-            String lastLine = Files.readAllLines(filePath).get(Files.readAllLines(filePath).size() - 1);
+            List<String> lines = Files.readAllLines(filePath);
+            String lastLine = lines.get(lines.size() - 1);
             if (lastLine.trim().equals(userData.trim())) {
                 System.out.println("\n\nRegistration successful!");
+                return true;
             } else {
                 System.out.println("\n\nWarning: Registration data verification failed.");
+                return false;
             }
         } catch (IOException e) {
             System.out.println("\n\nCritical error during registration: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
+
 
     // --------------------- Log In Method ---------------------
 
@@ -140,6 +147,22 @@ public class Investor extends User {
         System.out.println("\nRisk asset added to your portfolio");
     }
 
+    public void printAllRegularAssets() {
+        System.out.println("\n=== Your Regular Assets ===");
+        boolean hasRegularAssets = false;
+
+        for (Asset asset : portfolio) {
+            if (!(asset instanceof Risk)) {
+                (asset).printAssetDetails();
+                hasRegularAssets = true;
+            }
+        }
+
+        if (!hasRegularAssets) {
+            System.out.println("No regular assets found in your portfolio.");
+        }
+    }
+
     public void printAllRiskAssets() {
         System.out.println("\n=== Your Risk Assets ===");
         boolean hasRiskAssets = false;
@@ -183,11 +206,25 @@ public class Investor extends User {
         System.out.println("\nBank account not found.\n");
     }
 
+    public void displayBankAccounts() {
+        System.out.println("\n=== Your bank accounts ===");
+        boolean hasAccounts = false;
+
+        for (BankAccount account : bankAccounts) {
+            (account).printAccountDetails();
+            hasAccounts = true;
+        }
+
+        if (!hasAccounts) {
+            System.out.println("No accounts in your profile.");
+        }
+    }
+
     // --------------------- Financial Goal Methods ---------------------
 
     public void addGoal(FinancialGoal goal) {
         goals.add(goal);
-        System.out.println("\nGoal added: " + goal.getDescription() + " with target $" + goal.getTargetAmount());
+        System.out.println("\nGoal added with Description: " + goal.getDescription() + " , with target $" + goal.getTargetAmount());
     }
 
     public void updateGoal(int goalID, String newDescription, double newTargetAmount) {
@@ -211,6 +248,19 @@ public class Investor extends User {
             }
         }
         System.out.println("\nGoal not found.");
-    } 
+    }
 
+    public void displayGoals() {
+        System.out.println("\n=== Your goals ===");
+        boolean hasGoals = false;
+
+        for (FinancialGoal goal : goals) {
+            (goal).printGoalDetails();
+            hasGoals = true;
+        }
+
+        if (!hasGoals) {
+            System.out.println("No Goals in your profile.");
+        }
+    }
 }
