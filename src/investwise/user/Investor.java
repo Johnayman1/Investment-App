@@ -211,6 +211,6 @@ public class Investor extends User {
             }
         }
         System.out.println("\nGoal not found.");
-    }
+    } 
 
 }
