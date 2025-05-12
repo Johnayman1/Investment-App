@@ -3,6 +3,8 @@ import java.util.Scanner;
 import investwise.user.Investor;
 import investwise.controller.ValidationService;
 public class Manage_Bank {
+
+    private static int accountNumber = 1 ;
     public void Bank(Investor investor){
 
         ValidationService vs = new ValidationService();
@@ -15,23 +17,14 @@ public class Manage_Bank {
 
             System.out.println("\n1) Add Bank Account");
             System.out.println("2) Remove Bank Account");
-            System.out.println("3) Exit");
+            System.out.println("3) Display All Bank Accounts");
+            System.out.println("4) Exit");
 
 
             System.out.print("\nPlease, enter your choice: ");
             choice = sc.nextLine();
 
             if (choice.equals("1")) {
-
-                int accountNumber; String inputAccountNumber;
-                while (true){
-                    System.out.print("Please, enter account number: ");
-                    inputAccountNumber = sc.nextLine();
-                    if(vs.isNumber(inputAccountNumber)) {
-                        accountNumber = Integer.parseInt(inputAccountNumber);
-                        break;
-                    }
-                }
 
                 System.out.print("Please, enter bank name: ");
                 String bankName = sc.nextLine();
@@ -69,8 +62,9 @@ public class Manage_Bank {
                     }
                 }
 
-                BankAccount bankAccount = new BankAccount(accountNumber, bankName, userId, cardNumber, cvv, expiryDate);
+                BankAccount bankAccount = new BankAccount(accountNumber++, bankName, userId, cardNumber, cvv, expiryDate);
                 investor.addBankAccount(bankAccount);
+                break;
 
             } else if (choice.equals("2")) {
 
@@ -84,11 +78,17 @@ public class Manage_Bank {
                     }
                 }
                 investor.removeBankAccount(accNumber);
+                break;
 
-            } else if (choice.equals("3")){
+            }else if (choice.equals("3")) {
+                investor.displayBankAccounts();
+                break;
+            }
+            else if (choice.equals("4")){
                 System.out.println("\n***************************************************************\n\n");
                 break ;
             }
+            System.out.println("Invalid choice. Try again.");
         }
     }
 }
