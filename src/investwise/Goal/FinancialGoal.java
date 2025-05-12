@@ -14,7 +14,11 @@ public class FinancialGoal {
         this.currentProgress = 0;
     }
 
-    
+    public void printGoalDetails() {
+        System.out.println("Goal ID: " + goalID);
+        System.out.println("Description: " + description);
+        System.out.println("Target Amount: " + targetAmount);
+    }
     // Setters
     public void setGoalID(int goalID) {
         this.goalID = goalID;
