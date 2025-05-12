@@ -10,6 +10,7 @@ public class Asset {
     private int purchasePrice;
     private String purchaseDate;
 
+
     public Asset(int assetID, String name,String type,int quantity , int purchasePrice,String purchaseDate) {
         this.assetID = assetID;
         this.name = name;
@@ -19,6 +20,14 @@ public class Asset {
         this.purchaseDate = purchaseDate;
     }
 
+    public void printAssetDetails() {
+        System.out.println("ID: " + getAssetID());
+        System.out.println("Name: " + getName());
+        System.out.println("Type: " + getType());
+        System.out.println("Quantity: " + getQuantity());
+        System.out.println("Price: $" + getPurchasePrice());
+        System.out.println("Purchase Date: " + getPurchaseDate());
+    }
     public int getAssetID() { return assetID; }
     public String getName() { return name; }
     public String getType() { return type; }
