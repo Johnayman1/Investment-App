@@ -1,0 +1,10 @@
+.NET Core
+.NET Core is a free, open-source development platform made by Microsoft. It allows developers to build many types of applications such as web apps, desktop apps, mobile apps, APIs, cloud services, and more. It is a cross-platform tool, which means you can run your code on Windows, Linux, and macOS without changing it.
+
+One of the things I liked most about .NET Core is its speed and performance. It runs very fast compared to older frameworks, and it's great for building web applications and APIs. Also, it's lightweight and doesn’t require installing big packages to get started. You can build and run a small web server in just a few lines of code.
+
+.NET Core uses the C# programming language, which is easy to learn and has modern features. It also works with popular tools like Visual Studio or Visual Studio Code. When I tried it, I found it easy to create a small web API that returned user data using just a few commands in the terminal and a basic controller file.
+
+Another great point is that .NET Core is part of a bigger platform called .NET 6/7/8, which unifies all app development types. Microsoft and the developer community actively update it, which means it's improving all the time.
+
+In short, I think .NET Core is a powerful and friendly tool for developers. Whether you're new to coding or already experienced, it helps you create strong applications fast. I would recommend it to anyone interested in modern software development, especially if they want to work in companies using Microsoft technologies.
