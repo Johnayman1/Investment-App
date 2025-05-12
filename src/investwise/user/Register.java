@@ -51,8 +51,8 @@ public class Register {
 
                 }
 
-                investor.signup( inputName, inputEmail, inputUsername, inputPassword);
-                login = true;
+                login = investor.signup( inputName, inputEmail, inputUsername, inputPassword);
+                break;
 
             } else if (choice.equals("2")) {
 
@@ -75,4 +75,4 @@ public class Register {
         }
         return login;
     }
-} 
+}
