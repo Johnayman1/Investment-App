@@ -8,7 +8,7 @@ public abstract class User {
     protected String password;
 
     public abstract boolean login(String email, String password);
-    public abstract void signup(String name, String email, String username, String password);
+    public abstract boolean signup(String name, String email, String username, String password);
 
 
     public String getName() {
