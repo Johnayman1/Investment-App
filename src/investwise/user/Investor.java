@@ -259,7 +259,7 @@ public class Investor extends User {
             hasGoals = true;
         }
 
-        if (!hasGoals) {
+        if (!hasGoals) { 
             System.out.println("No Goals in your profile.");
         }
     }
