@@ -15,7 +15,7 @@ public abstract class User {
         return name;
     }
 
-    public String getEmail() {
+    public String getEmail() { 
         return email;
     }
 
