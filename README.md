@@ -128,11 +128,14 @@ Code	Technology	Summary
 
 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
+ ---
+## 👨‍💻 Contributing
+Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
-🙋‍♂️ Contributors
-[Contributor Name 1] - Role/Contribution
+## ✍️ Authors
+- Mariam Badr Yehia: [GitHub](https://github.com/Mariam-Badr-MB) - [LinkedIn](https://www.linkedin.com/in/mariambadr13/)
+- George Malak Magdy:  [GitHub](https://github.com/GeorgeMalakM) - [LinkedIn](https://www.linkedin.com/in/george-malak204/)
+- John Ayman Demian:  [GitHub](https://github.com/Johnayman1) - [LinkedIn](https://www.linkedin.com/in/john-ayman-aa30842b7/)
 
-[Contributor Name 2] - Role/Contribution
 
-[Contributor Name 3] - Role/Contribution
 
