@@ -108,9 +108,8 @@ Invest aims to simplify the investment process by integrating essential financia
    ↓ 
 [Logged Out]
 
----
-
-🧠 SOLID Principles Applied
+```
+## 🧠 SOLID Principles Applied
 Single Responsibility: Each class has one role (e.g., ZakatCalculator only calculates zakat).
 Open/Closed: Supports new features like CryptoAsset without modifying existing classes.
 
@@ -120,12 +119,13 @@ Liskov Substitution: Investor replaces User wherever needed.
 
 Interface Segregation: Fine-grained interfaces for services like Notifications, Reports, etc.
 
-🛰 TechRadar (Task 5)
+## 🛰 TechRadar (Task 5)
+```
 Code	Technology	Summary
 20230391	Prompt Engineering	Optimizing AI interactions using structured prompting techniques
 20230109	React Hook Form	Efficient form management in React with validation
 20230244	.NET Core	Cross-platform backend framework with high performance and flexibility
-
+```
 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
  ---
@@ -134,7 +134,7 @@ Contributions are welcome! Feel free to fork the repo and submit a pull request.
 
 ## ✍️ Authors
 - Mariam Badr Yehia: [GitHub](https://github.com/Mariam-Badr-MB) - [LinkedIn](https://www.linkedin.com/in/mariambadr13/)
-- George Malak Magdy:  [GitHub](https://github.com/GeorgeMalakM) - [LinkedIn](https://www.linkedin.com/in/george-malak204/)
+- Emad George :  [GitHub]() - [LinkedIn]()
 - John Ayman Demian:  [GitHub](https://github.com/Johnayman1) - [LinkedIn](https://www.linkedin.com/in/john-ayman-aa30842b7/)
 
 
