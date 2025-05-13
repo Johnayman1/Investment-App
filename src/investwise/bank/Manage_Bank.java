@@ -86,7 +86,7 @@ public class Manage_Bank {
             }
             else if (choice.equals("4")){
                 System.out.println("\n***************************************************************\n\n");
-                break ;
+                break ; 
             }
             System.out.println("Invalid choice. Try again.");
         }
